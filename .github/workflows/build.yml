@@ -12,10 +12,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: grant execute
-        run: chmod +x gradlew || true
+      - name: install gradle
+        run: sudo apt update && sudo apt install gradle -y
       - name: build release apk
-        run: ./gradlew assembleRelease
+        run: gradle assembleRelease
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
